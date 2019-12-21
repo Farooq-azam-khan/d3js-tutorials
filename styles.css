@@ -26,6 +26,7 @@ h2 {
   flex-direction: column;
   max-width: 960px;
   margin: 0 auto;
+  margin-bottom: 1rem;
 }
 
 .row {
