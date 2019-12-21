@@ -1,3 +1,9 @@
-import { name } from "./components/test.js";
+import { formatCar } from "./components/car.js";
 
-document.getElementById("app").innerText = name;
+d3.json("./data/cars.json").then(
+  data => (document.getElementById("carsData").innerText = JSON.stringify(data))
+);
+
+d3.json("./data/cars.json").then(
+  data => (document.getElementById("formatCar").innerText = data.map(formatCar))
+);

@@ -1,0 +1,12 @@
+body {
+  font-family: "Baskervville", serif;
+}
+
+code {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 1.5rem;
+}
+
+.file-reference {
+  font-family: "IBM Plex Mono", monospace;
+}
