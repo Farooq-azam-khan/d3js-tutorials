@@ -5,7 +5,8 @@ body {
 
 /* debuggin */
 .container {
-  border: 1px solid blue;
+  border: 1px solid whitesmoke;
+  background-color: whitesmoke;
 }
 .row {
   border: 1px dashed darkgrey;
@@ -57,4 +58,7 @@ iframe[seamless] {
 svg {
   width: 100%;
   background-color: papayawhip;
+  max-height: 520px;
+  max-width: 960px;
+  height: 520px;
 }

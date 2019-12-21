@@ -1,8 +1,11 @@
 export const createFace = function() {
-  const width = 960;
-  const height = 520;
+  // const width = 960;
+  // const height = 520;
+  const width = document.querySelector("#face").clientWidth;
+  const height = document.querySelector("#face").clientHeight;
+  // console.log({ width, height });
   const svg = d3.select("#face").attr("height", height);
-  const circle = svg
+  const face = svg
     .append("circle")
     .attr("r", 200)
     .attr("cx", width / 2)
@@ -66,7 +69,7 @@ export const createFace = function() {
         endAngle: -Math.PI / 2 + eyeBrowAngleOffset
       })
     );
-  eyebrowGroup
+  const rightEyebrow = eyebrowGroup
     .append("path")
     .attr("transform", `translate(${eyeBrowXOffset}, ${-eyeBrowYOffset})`)
     .attr(
@@ -77,5 +80,13 @@ export const createFace = function() {
         startAngle: Math.PI / 2 - eyeBrowAngleOffset,
         endAngle: -Math.PI / 2 + eyeBrowAngleOffset
       })
+    );
+
+  rightEyebrow
+    .transition()
+    .duration(2000)
+    .attr(
+      "transform",
+      `translate(${eyeBrowXOffset}, ${-1.4 * eyeBrowYOffset})`
     );
 };
