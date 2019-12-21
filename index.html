@@ -21,20 +21,93 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <div id="app">
+    <div id="app" class="container">
       <h1>D3 tutorial</h1>
-      <h2>Working with Javascript</h2>
-      <p>We have the following data of cars</p>
-      <code id="carsData"></code>
+      <div class="row">
+        <h2>Working with Javascript</h2>
+        <p>We have the following data of cars</p>
+        <code id="carsData"></code>
 
-      <p>We can use functional programming to make it look nicer</p>
-      <code id="formatCar"></code>
-      <p>
-        This is done by mapping over the data with a custom function that
-        formats each object (i.e. each car description). Look at
-        <span class="file-reference">components/car.js</span> file.
-      </p>
+        <p>We can use functional programming to make it look nicer</p>
+        <code id="formatCar"></code>
+        <p>
+          This is done by mapping over the data with a custom function that
+          formats each object (i.e. each car description). Look at
+          <span class="file-reference">components/car.js</span> file for the
+          formatting function.
+        </p>
+        <p>
+          We can also filter by a specific price. In the following example we
+          filter by car prices less than $2000.
+        </p>
+        <code id="filterCarPrice"></code>
+      </div>
+      <!-- end of row 1 -->
+
+      <div class="row">
+        <h2>HTML CSS and SVG</h2>
+        <p>
+          We can write scalable vector graphics (SVG) using the svg tag. Learn
+          the follwoing:
+        </p>
+        <ol>
+          <li>
+            height and width of the svg tag (defined it here as height="520" and
+            width="100%" (of its parent i.e. the .row class);
+          </li>
+          <li>
+            circle tag which takes in cx, cy and r all self explanitory;
+          </li>
+          <li>
+            Same goes for the rect tag which takes in x, y, width, and height;
+          </li>
+          <li>
+            the group element which applies a tranformation, fill, stroke, etc.
+            to all its children element. These children elements can be any tag
+            (circle, rectangle, or path);
+          </li>
+          <li>
+            lastly the path where the d attribute is the most important. It can
+            any polygon you desire. It requires a start point M x,y. Then a line
+            to a desired point: L x2,y2. These L points can be grouped n times.
+          </li>
+        </ol>
+        <svg height="520">
+          <circle r="100" cx="100" cy="100"></circle>
+          <rect x="250" y="0" width="100" height="200"></rect>
+
+          <circle r="100" cx="100" cy="350" fill="#fabfab"></circle>
+          <rect x="250" y="250" width="100" height="200" fill="#fabfab"></rect>
+
+          <g fill="#2afbaf" stroke="#345345">
+            <circle r="100" cx="500" cy="100" stroke-width="2"></circle>
+            <rect x="650" y="0" width="100" height="200"></rect>
+          </g>
+          <line
+            x1="380"
+            y1="0"
+            x2="380"
+            y2="520"
+            stroke="red"
+            stroke-weight="3"
+          ></line>
+
+          <path
+            stroke="orange"
+            stroke-width="3"
+            fill="none"
+            d="M 0,220 L 900,220 L 900,510 L 380,510 L 900, 220"
+          ></path>
+          <path
+            stroke="orange"
+            stroke-width="3"
+            fill="#ab5ab5"
+            d="M 900,220 L 900,510 L 380,510 L 900,220"
+          ></path>
+        </svg>
+      </div>
     </div>
+    <!-- end of container-->
     <!-- d3 js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.14.2/d3.min.js"></script>
     <script type="module" src="index.js"></script>

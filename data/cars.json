@@ -18,15 +18,9 @@
     "price": 2100
   },
   {
-    "make": "Nissan",
-    "model": "Leaf",
+    "make": "Tesla",
+    "model": "ModelX",
     "year": 2012,
-    "price": 1800
-  },
-  {
-    "make": "Nissan",
-    "model": "Leaf",
-    "year": 2012,
-    "price": 1800
+    "price": 100000
   }
 ]

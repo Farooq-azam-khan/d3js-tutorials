@@ -1,12 +1,59 @@
 body {
   font-family: "Baskervville", serif;
+  margin: 0;
+}
+
+/* debuggin */
+.container {
+  border: 1px solid blue;
+}
+.row {
+  border: 1px dashed darkgrey;
+}
+
+code {
+  border: 1px dashed greenyellow;
+}
+/* general styles */
+h1,
+h2 {
+  text-align: center;
+}
+
+/* flexbox styles */
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.row {
+  margin: 1rem 1rem;
 }
 
 code {
   font-family: "IBM Plex Mono", monospace;
-  font-size: 1.5rem;
+  font-size: 1rem;
+  width: 100%;
 }
 
 .file-reference {
   font-family: "IBM Plex Mono", monospace;
+}
+
+iframe {
+  width: 100%;
+}
+iframe:focus {
+  outline: none;
+}
+
+iframe[seamless] {
+  display: block;
+}
+
+svg {
+  width: 100%;
+  background-color: papayawhip;
 }
