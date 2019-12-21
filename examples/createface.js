@@ -82,11 +82,25 @@ export const createFace = function() {
       })
     );
 
+  const timeTranstion = 2000;
+
   rightEyebrow
     .transition()
-    .duration(2000)
-    .attr(
-      "transform",
-      `translate(${eyeBrowXOffset}, ${-1.4 * eyeBrowYOffset})`
-    );
+    .duration(timeTranstion)
+    .attr("transform", `translate(${eyeBrowXOffset}, ${-1.4 * eyeBrowYOffset})`)
+    .transition()
+    .duration(timeTranstion)
+    .attr("transform", `translate(${eyeBrowXOffset}, ${-eyeBrowYOffset})`);
+
+  eyebrowGroup
+    .transition()
+    .delay(timeTranstion * 2)
+    .duration(timeTranstion)
+    .attr("transform", `translate(${width / 2}, ${height / 2 - 10})`);
+
+  eyebrowGroup
+    .transition()
+    .delay(timeTranstion * 3)
+    .duration(timeTranstion)
+    .attr("transform", `translate(${0}, ${0})`);
 };

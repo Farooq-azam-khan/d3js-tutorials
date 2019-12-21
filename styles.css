@@ -3,13 +3,22 @@ body {
   margin: 0;
 }
 
-/* debuggin */
+/* debugging */
 .container {
   border: 1px solid whitesmoke;
   background-color: whitesmoke;
 }
 .row {
   border: 1px dashed darkgrey;
+}
+
+p {
+  background-color: thistle;
+}
+
+ol,
+ul {
+  background-color: wheat;
 }
 
 code {
@@ -61,4 +70,11 @@ svg {
   max-height: 520px;
   max-width: 960px;
   height: 520px;
+}
+
+ol,
+ul,
+p {
+  font-size: 1.1rem;
+  margin: 0.5rem 1.5rem;
 }

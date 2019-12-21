@@ -7,9 +7,14 @@ d3.json("./data/cars.json").then(displayToDOM);
 function displayToDOM(data) {
   document.getElementById("carsData").innerText = JSON.stringify(data, null, 4);
 
-  document.getElementById("formatCar").innerText = data.map(formatCar);
+  document.getElementById("formatCar").innerText = data.reduce((acc, d) => {
+    acc += formatCar(d) + "\n";
+    return acc;
+  }, "");
   document.getElementById("filterCarPrice").innerText = JSON.stringify(
-    filterByPrice(data, 2000)
+    filterByPrice(data, 2000),
+    null,
+    4
   );
 }
 
