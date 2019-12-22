@@ -1,21 +1,22 @@
 body {
   font-family: "Baskervville", serif;
   margin: 0;
-  /* reset numbering for headings */
-  counter-reset: h2counter;
 }
 
 /* debugging */
 .container {
   background-color: white;
+  /* reset numbering for headings */
+  counter-reset: h2counter 0;
 }
+
 .row {
-  /* border: 1px dashed darkgrey; */
   width: 95%;
+  counter-reset: h3counter;
 }
 
 p code {
-  background-color: #fcd781;
+  background-color: #ffefc4;
   /* border: 1px dashed greenyellow; */
 }
 /* general styles */
@@ -34,10 +35,9 @@ h1 {
   font-weight: 700;
 }
 
-h2:before {
-  content: counter(h2counter) ".\0000a0\0000a0";
+h2::before {
   counter-increment: h2counter;
-  counter-reset: h3counter;
+  content: counter(h2counter) ".\0000a0\0000a0";
 }
 h2 {
   font-size: 2rem;
@@ -45,14 +45,14 @@ h2 {
   color: #9a3e25;
 }
 
-h3:before {
-  content: counter(h2counter) "." counter(h3counter) ".\0000a0\0000a0";
+h3::before {
   counter-increment: h3counter;
-  counter-reset: h4counter;
+  content: counter(h2counter) "." counter(h3counter) ".\0000a0";
 }
 h3 {
   font-size: 1.5rem;
   letter-spacing: 0.2rem;
+  color: darkgreen;
 }
 
 /* if one needs to add counter h4 h5 or h6 */
