@@ -11,6 +11,18 @@ const radiusScale = d3
 export const fruitBowlRender = (selection, props) => {
   const { fruits, height } = props;
 
+  //   adding only one element
+  const bowl = selection
+    .selectAll("rect")
+    .data([null])
+    .enter()
+    .append("rect")
+    .attr("width", 910)
+    .attr("height", 300)
+    .attr("y", 110)
+    .attr("rx", 300 / 2)
+    .attr("fill", "#e5ddbc");
+
   const groups = selection
     .selectAll("g")
     .data(fruits, d => d.id)
