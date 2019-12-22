@@ -2,7 +2,7 @@ const width = document.querySelector("#face").clientWidth;
 const height = document.querySelector("#face").clientHeight;
 
 export const barchartPopulation = function() {
-  d3.csv("/data/population_by_country.csv").then(data => {
+  d3.csv("data/population_by_country.csv").then(data => {
     // process data
     data.forEach(d => {
       d.population = +d.population * 1000;
