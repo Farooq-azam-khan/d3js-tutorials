@@ -8,6 +8,8 @@ import { temperatureScatterPlot } from "./examples/temperatureScatterplot.js";
 import { linePlotTemp } from "./examples/lineplotTemp.js";
 import { areaPlotTemp } from "./examples/areaChartTemp.js";
 import { areaPlotPop } from "./examples/areaChartPopulation.js";
+import { bowloffruit } from "./examples/bowlOfFruit.js";
+import { nestedBowlOfFruit } from "./examples/nestedElementsGeneralUpdatePattern.js";
 
 let lineplotTempState = {
   showFill: false,
@@ -20,6 +22,20 @@ const clearPlot = function(id) {
     val.innerHTML = "";
   });
 };
+
+// document.getElementById("toggle").addEventListener("change", () => {
+//   clearPlot("lineplot-temp");
+
+//   if (document.getElementById("toggle").checked) {
+//     console.log("on");
+//     lineplotTempState.showPoints = true;
+//   } else {
+//     console.log("off");
+//     lineplotTempState.showPoints = false;
+//   }
+
+//   linePlotTemp(lineplotTempState);
+// });
 document.getElementById("show-points").addEventListener("click", () => {
   clearPlot("lineplot-temp");
   lineplotTempState.showPoints = !lineplotTempState.showPoints;
@@ -62,6 +78,17 @@ document
       areaPlotTemp(tempAreaPlot);
     }
   });
+
+const fruitState = {
+  eatApple: false,
+  replaceLemon: false,
+  startAnimation: false
+};
+document.getElementById("bowl-animation").addEventListener("click", () => {
+  fruitState.startAnimation = true;
+  bowloffruit(fruitState);
+  document.getElementById("bowl-animation").disabled = true;
+});
 
 window.addEventListener("DOMContentLoaded", function() {
   // TODO: get a state base approach for interatcion
@@ -115,4 +142,10 @@ window.addEventListener("DOMContentLoaded", function() {
   areaPlotTemp(tempAreaPlot);
   // population area plot
   areaPlotPop();
+
+  // bowl of fruit: general update pattern
+  bowloffruit(fruitState);
+
+  // nested elements
+  nestedBowlOfFruit({ startAnimation: true });
 });
