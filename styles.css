@@ -97,6 +97,7 @@ p {
   stroke-width: 1;
 }
 .plot-title {
+  text-anchor: middle;
   fill: #635f5d;
   font-family: "Ubuntu", sans-serif;
   font-size: 3rem;
