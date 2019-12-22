@@ -253,3 +253,12 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+g.bowl-group {
+  background: #cff;
+  border: 1px dashed black;
+}
+g.bowl-group:hover {
+  background: #acc;
+  border: 1px solid black;
+}

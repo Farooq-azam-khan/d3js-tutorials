@@ -8,27 +8,37 @@ const radiusScale = d3
   .domain(["apple", "lemon"])
   .range([50, 30]);
 
-const xPosition = (d, i) => i * 120 + 60;
-
 export const fruitBowlRender = (selection, props) => {
   const { fruits, height } = props;
 
-  const groups = selection.selectAll("g").data(fruits, d => d.id);
+  const groups = selection
+    .selectAll("g")
+    .data(fruits, d => d.id)
+    .attr("class", "bowl-group");
 
   const groupsEnter = groups.enter().append("g");
   groupsEnter
+    .attr("transform", (d, i) => `translate(${i * 120 + 100},${height / 2})`)
+
     .merge(groups)
+    .transition()
+    .duration(1000)
     .attr("transform", (d, i) => `translate(${i * 120 + 100},${height / 2})`);
 
   groups.exit().remove();
 
   const circles = groups.select("circle");
-
   groupsEnter
     .append("circle")
+    .attr("r", 0)
     .merge(circles)
     .attr("fill", d => colorScale(d.type))
+    .transition()
+    .duration(1000)
     .attr("r", d => radiusScale(d.type));
+
+  // .transition()
+  // .attr("r", 0);
 
   const text = groups.select("text");
 

@@ -80,15 +80,40 @@ document
   });
 
 const fruitState = {
-  eatApple: false,
-  replaceLemon: false,
-  startAnimation: false
+  startAnimation: true
 };
 document.getElementById("bowl-animation").addEventListener("click", () => {
   fruitState.startAnimation = true;
   bowloffruit(fruitState);
   document.getElementById("bowl-animation").disabled = true;
+  setTimeout(() => {
+    document.getElementById("bowl-animation").disabled = false;
+  }, 3000);
 });
+
+const generalPatternState = {
+  startAnimation: true
+};
+
+document
+  .getElementById("general-pattern-bowl-animation")
+  .addEventListener("click", () => {
+    generalPatternState.startAnimation = true;
+    nestedBowlOfFruit(generalPatternState);
+    document.getElementById("general-pattern-bowl-animation").disabled = true;
+    setTimeout(() => {
+      document.getElementById(
+        "general-pattern-bowl-animation"
+      ).disabled = false;
+    }, 3000);
+  });
+
+document.getElementById("general-pattern-bowl-animation").disabled = true;
+document.getElementById("bowl-animation").disabled = true;
+setTimeout(() => {
+  document.getElementById("general-pattern-bowl-animation").disabled = false;
+  document.getElementById("bowl-animation").disabled = false;
+}, 3000);
 
 window.addEventListener("DOMContentLoaded", function() {
   // TODO: get a state base approach for interatcion
@@ -147,5 +172,5 @@ window.addEventListener("DOMContentLoaded", function() {
   bowloffruit(fruitState);
 
   // nested elements
-  nestedBowlOfFruit({ startAnimation: true });
+  nestedBowlOfFruit(generalPatternState);
 });
