@@ -1,7 +1,7 @@
 const width = document.querySelector("#face").clientWidth;
 const height = document.querySelector("#face").clientHeight;
 
-export const areaPlotTemp = function() {
+export const areaPlotTemp = function(props) {
   d3.csv(
     "https://vizhub.com/curran/datasets/temperature-in-san-francisco.csv"
   ).then(data => {
@@ -10,11 +10,12 @@ export const areaPlotTemp = function() {
       d.timestamp = new Date(d.timestamp);
       d.temperature = +d.temperature;
     });
-    render(data);
+    render(data, props);
   });
 };
 
-const render = data => {
+const render = (data, props) => {
+  const { showStroke, showPoints, strokeWeight } = props;
   const svg = d3.select("#area-temp");
   const title = "Week of Temp in San-Fran";
   const xAxisLabel = "TimeStamp";
@@ -23,8 +24,7 @@ const render = data => {
   const circleRadius = 3;
   const innerWidth = width - margin.left - margin.right;
   const innerHeight = height - margin.top - margin.bottom;
-  const addPoints = false;
-  const showFill = false;
+
   const g = svg
     .append("g")
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
@@ -94,14 +94,12 @@ const render = data => {
   const linePath = g
     .append("path")
     .attr("class", "area-plot")
-    .attr("d", areaGenerator(data));
+    .attr("d", areaGenerator(data))
+    .attr("fill", "#688BAB")
+    .attr("stroke", showStroke ? "black" : "none")
+    .attr("stroke-width", showStroke ? strokeWeight : 0);
 
-  if (showFill) {
-    linePath.attr("fill", "#688BAB");
-  } else {
-    linePath.attr("fill", "none");
-  }
-  if (addPoints) {
+  if (showPoints) {
     g.selectAll("circle")
       .data(data)
       .enter()
@@ -114,8 +112,11 @@ const render = data => {
       // keeps track of width of the bandwidth on the y scale
       .attr("r", circleRadius);
   }
-  g.append("text")
+  svg
+    .append("text")
     .text(title)
+    .attr("text-anchor", "middle")
+    .attr("x", width / 2)
     .attr("class", "plot-title")
-    .attr("y", -10);
+    .attr("y", 50);
 };

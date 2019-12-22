@@ -27,7 +27,7 @@
   </head>
   <body>
     <div id="app" class="container">
-      <h1>D3 tutorial</h1>
+      <h1>D3 Tutorial</h1>
       <div class="row">
         <h2>Working with Javascript</h2>
         <p>We have the following data of cars</p>
@@ -154,14 +154,29 @@
       <div class="row">
         <h2>Lineplots</h2>
         <p>Let us do line plots now</p>
+        <p>Here are some options you can play with:</p>
+        <button id="show-points">Toggle Points</button>
+        <button id="show-fill">Toggle Fill</button>
         <svg id="lineplot-temp"></svg>
       </div>
       <!-- end of row 7 -->
       <div class="row">
         <h2>Area Plot</h2>
         <p>Let us do area plot now</p>
+        <button id="show-stroke">Toggle Stroke</button>
+        <button id="show-points-areaplot">Toggle Points</button>
+        <p>
+          Change the size of the strok when show.
+          <input
+            type="number"
+            value="2"
+            placeholder="stroke weight"
+            id="adjust-stroke-weight-area-temp"
+          />
+        </p>
+
         <svg id="area-temp"></svg>
-        <h3>Area with baseline</h3>
+        <h3>Area with Baseline</h3>
         <p>
           The baseline is an important property of an area plot. In the above
           example the temperature baseline was 14 but that is not a correct

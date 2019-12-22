@@ -75,8 +75,11 @@ const render = data => {
     // keeps track of width of the bandwidth on the y scale
     .attr("r", 18);
 
-  g.append("text")
+  svg
+    .append("text")
     .text(title)
+    .attr("text-anchor", "middle")
+    .attr("x", width / 2)
     .attr("class", "plot-title")
-    .attr("y", -10);
+    .attr("y", 50);
 };

@@ -119,6 +119,7 @@ const render = data => {
   svg
     .append("text")
     .text(title)
+    .attr("text-anchor", "middle")
     .attr("x", width / 2)
     .attr("class", "plot-title")
     .attr("y", 50);

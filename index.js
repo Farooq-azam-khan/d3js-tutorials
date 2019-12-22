@@ -9,7 +9,63 @@ import { linePlotTemp } from "./examples/lineplotTemp.js";
 import { areaPlotTemp } from "./examples/areaChartTemp.js";
 import { areaPlotPop } from "./examples/areaChartPopulation.js";
 
+let lineplotTempState = {
+  showFill: false,
+  showPoints: false
+};
+
+const clearPlot = function(id) {
+  const groups = document.getElementById(id).querySelectorAll("g");
+  groups.forEach(val => {
+    val.innerHTML = "";
+  });
+};
+document.getElementById("show-points").addEventListener("click", () => {
+  clearPlot("lineplot-temp");
+  lineplotTempState.showPoints = !lineplotTempState.showPoints;
+
+  linePlotTemp(lineplotTempState);
+});
+document.getElementById("show-fill").addEventListener("click", () => {
+  clearPlot("lineplot-temp");
+  lineplotTempState.showFill = !lineplotTempState.showFill;
+
+  linePlotTemp(lineplotTempState);
+});
+
+let tempAreaPlot = {
+  showStroke: false,
+  strokeWeight: 2,
+  showPoints: false
+};
+
+document.getElementById("show-stroke").addEventListener("click", () => {
+  clearPlot("area-temp");
+  tempAreaPlot.showStroke = !tempAreaPlot.showStroke;
+  areaPlotTemp(tempAreaPlot);
+});
+document
+  .getElementById("show-points-areaplot")
+  .addEventListener("click", () => {
+    clearPlot("area-temp");
+    tempAreaPlot.showPoints = !tempAreaPlot.showPoints;
+    areaPlotTemp(tempAreaPlot);
+  });
+document
+  .getElementById("adjust-stroke-weight-area-temp")
+  .addEventListener("change", () => {
+    if (tempAreaPlot.showStroke) {
+      clearPlot("area-temp");
+      console.log("changed");
+      tempAreaPlot.strokeWeight = document.getElementById(
+        "adjust-stroke-weight-area-temp"
+      ).value;
+      areaPlotTemp(tempAreaPlot);
+    }
+  });
+
 window.addEventListener("DOMContentLoaded", function() {
+  // TODO: get a state base approach for interatcion
   // cars basic js
   d3.json("./data/cars.json").then(displayToDOM);
 
@@ -52,10 +108,12 @@ window.addEventListener("DOMContentLoaded", function() {
   temperatureScatterPlot();
 
   // temp lin plot;
-  linePlotTemp();
+  // listen for actions
+
+  linePlotTemp(lineplotTempState);
 
   // area plot for temp
-  areaPlotTemp();
+  areaPlotTemp(tempAreaPlot);
   // population area plot
   areaPlotPop();
 });
