@@ -6,6 +6,7 @@ import { scatterPlot } from "./examples/scatterplot.js";
 import { carsScatterPlot } from "./examples/carsScatterplot.js";
 import { temperatureScatterPlot } from "./examples/temperatureScatterplot.js";
 import { linePlotTemp } from "./examples/lineplotTemp.js";
+import { areaPlotTemp } from "./examples/areaChartTemp.js";
 window.addEventListener("DOMContentLoaded", function() {
   // cars basic js
   d3.json("./data/cars.json").then(displayToDOM);
@@ -50,4 +51,7 @@ window.addEventListener("DOMContentLoaded", function() {
 
   // temp lin plot;
   linePlotTemp();
+
+  // area plot for temp
+  areaPlotTemp();
 });

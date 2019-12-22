@@ -1,7 +1,7 @@
 const width = document.querySelector("#face").clientWidth;
 const height = document.querySelector("#face").clientHeight;
 
-export const linePlotTemp = function() {
+export const areaPlotTemp = function() {
   d3.csv(
     "https://vizhub.com/curran/datasets/temperature-in-san-francisco.csv"
   ).then(data => {
@@ -15,7 +15,7 @@ export const linePlotTemp = function() {
 };
 
 const render = data => {
-  const svg = d3.select("#lineplot-temp");
+  const svg = d3.select("#area-temp");
   const title = "Week of Temp in San-Fran";
   const xAxisLabel = "TimeStamp";
   const yAxisLabel = "Temperature";
@@ -23,8 +23,8 @@ const render = data => {
   const circleRadius = 3;
   const innerWidth = width - margin.left - margin.right;
   const innerHeight = height - margin.top - margin.bottom;
-  const addPoints = true;
-  const showFill = true;
+  const addPoints = false;
+  const showFill = false;
   const g = svg
     .append("g")
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
@@ -83,16 +83,17 @@ const render = data => {
     .attr("x", innerWidth / 2)
     .text(xAxisLabel);
 
-  const lineGenerator = d3
-    .line()
+  const areaGenerator = d3
+    .area()
     .x(d => xScale(xValue(d)))
-    .y(d => yScale(yValue(d)))
+    .y0(innerHeight)
+    .y1(d => yScale(yValue(d)))
     .curve(d3.curveBasis);
 
   const linePath = g
     .append("path")
-    .attr("class", "line-plot")
-    .attr("d", lineGenerator(data));
+    .attr("class", "area-plot")
+    .attr("d", areaGenerator(data));
 
   if (showFill) {
     linePath.attr("fill", "#688BAB");

@@ -118,3 +118,16 @@ text {
 .axis-label-scatterplot {
   font-size: 1.5rem;
 }
+
+.line-plot {
+  stroke: #bd2d28;
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+.area-plot {
+  fill: #e25a42;
+  stroke-linejoin: round;
+  stroke: black;
+  stroke-width: 2;
+}
