@@ -22,6 +22,12 @@
       rel="stylesheet"
     />
 
+    <!-- 3rd party css -->
+    <!-- highlight -->
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/default.min.css"
+    />
     <!-- custom styles -->
     <link rel="stylesheet" href="./styles.css" />
   </head>
@@ -134,7 +140,9 @@
         <h2>Making a Bar Chart</h2>
         <p>
           Got the data from here:
-          <a href="https://population.un.org/wpp/Download/Standard/Population/"
+          <a
+            target="_blank"
+            href="https://population.un.org/wpp/Download/Standard/Population/"
             >UN Data</a
           >
         </p>
@@ -218,10 +226,142 @@
         </p>
       </div>
       <!-- end of row 9-->
+      <div class="row">
+        <h2>Interaction with Unidirectional Dataflow</h2>
+        <p>Who knew you could interaction with data. Here we will see that.</p>
+        <svg id="interaction"></svg>
+      </div>
+      <!--end of row 10-->
+      <div class="row">
+        <h2>Making a Map with d3</h2>
+        <p>Lets make a map.</p>
+        <ul>
+          <li>Loading and parsing TOPJSON;</li>
+          <li>Rendering geopraphic features;</li>
+          <li>Using different map projections;</li>
+          <li>Rendering projected shpere outline.</li>
+        </ul>
+        <p>Here are some references used here:</p>
+        <ul>
+          <li>
+            <a target="_blank" href="https://www.npmjs.com/package/world-atlas"
+              >world-atlas npm</a
+            >
+          </li>
+          <li>
+            <a
+              target="_blank"
+              href="https://www.jsdelivr.com/package/npm/world-atlas"
+              >CDN for topjson</a
+            >
+            or
+            <a
+              target="_blank
+              "
+              href="https://unpkg.com/world-atlas@1.1.4/world/110m.json"
+              >I used</a
+            >
+          </li>
+          <li>
+            <a target="_blank" href="https://observablehq.com/@d3/world-map-svg"
+              >d3 geo</a
+            >
+          </li>
+          <li>
+            <a
+              target="_blank"
+              href="https://unpkg.com/topojson@3.0.2/dist/topojson.min.js"
+              >Block builder</a
+            >
+            website to search for ideas for maps
+          </li>
+        </ul>
+        <p>
+          Loaded topo json format and d3 requires geo json format. Thus use
+          topojson library for conversion. Got the topojson library from here:
+          <a href="https://unpkg.com/topojson@3.0.2/dist/topojson.min.js"
+            >TopoJSON Library</a
+          >.
+        </p>
+        <p>
+          Use the <code>topojson.feature(data)</code> function for conversion.
+        </p>
+
+        <p>
+          If the path type is sphere then you will get the thick borders around
+          the map.
+        </p>
+        <svg id="map-beg"></svg>
+        <pre><code class="js">export const createMapBeg = () => { 
+  const svg = d3.select("#id");
+  // type of projection
+  const projection = d3.geoMercator(); 
+  // path generator ie the d=""
+  const pathGenerator = d3.geoPath().projection(projection); 
+  d3.json("https://unpkg.com/world-atlas@1.1.4/world/110m.json")
+    .then(data => {
+          const countries = topojson
+                  .feature(data, data.objects.countries);
+          const paths = svg.selectAll("path").data(countries.features); 
+          paths.enter() .append("path") .attr("d", d => pathGenerator(d)); 
+  }); 
+};</code></pre>
+        <h3>Making some tweaks to the map</h3>
+
+        <p>
+          You will find the types of projections here:
+          <a href="https://github.com/d3/d3-geo-projection" target="_blank"
+            >Projections</a
+          >,
+          <a href="https://github.com/d3/d3-geo" target="_blank">
+            another link</a
+          >.
+        </p>
+        <p>Here is a list of some projections</p>
+        <ul>
+          <li>
+            <span class="js"><code>d3.geoOrthographic();</code> </span>
+            This is used below.
+          </li>
+          <li>
+            <span class="js"><code>d3.geoStereographic();</code></span>
+          </li>
+          <li>
+            <span class="js"><code>d3.geoEqualEarth();</code></span>
+          </li>
+          <li>
+            <span class="js"><code>d3.geoGnomonic();</code></span>
+          </li>
+        </ul>
+        <svg id="map-tweaks"></svg>
+        <p>
+          Need to figure out how to resize maps properly, and also how to rotate
+          them.
+        </p>
+
+        <h3>Map Interaction</h3>
+        <p>
+          Who knew we could interact with maps. Try to hover over them countries
+          in the following map.
+        </p>
+        <svg id="map-interaction"></svg>
+      </div>
+      <!-- end of section 11-->
     </div>
     <!-- end of container-->
+    <!-- hljs -->
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+    <!-- topoJSON -->
+    <script src="https://unpkg.com/topojson@3.0.2/dist/topojson.min.js"></script>
     <!-- d3 js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.14.2/d3.min.js"></script>
+    <!-- d3 geo projections -->
+    <script src="https://d3js.org/d3-array.v1.min.js"></script>
+    <script src="https://d3js.org/d3-geo.v1.min.js"></script>
+    <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
     <script type="module" src="index.js"></script>
   </body>
 </html>

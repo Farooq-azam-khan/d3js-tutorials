@@ -10,7 +10,9 @@ import { areaPlotTemp } from "./examples/areaChartTemp.js";
 import { areaPlotPop } from "./examples/areaChartPopulation.js";
 import { bowloffruit } from "./examples/bowlOfFruit.js";
 import { nestedBowlOfFruit } from "./examples/nestedElementsGeneralUpdatePattern.js";
-
+import { fruitInteraction } from "./examples/interactionUniDirection.js";
+import { createMapBeg } from "./examples/mapexample.js";
+import { createMapInter } from "./examples/mapInteraction.js";
 let lineplotTempState = {
   showFill: false,
   showPoints: false
@@ -116,6 +118,9 @@ setTimeout(() => {
 }, 3000);
 
 window.addEventListener("DOMContentLoaded", function() {
+  document.querySelectorAll("pre code").forEach(block => {
+    hljs.highlightBlock(block);
+  });
   // TODO: get a state base approach for interatcion
   // cars basic js
   d3.json("./data/cars.json").then(displayToDOM);
@@ -173,4 +178,12 @@ window.addEventListener("DOMContentLoaded", function() {
 
   // nested elements
   nestedBowlOfFruit(generalPatternState);
+  // fruit interaction
+  // interatcionState
+  fruitInteraction({ startAnimation: true });
+
+  // map with d3
+  createMapBeg();
+  // map interaction d3
+  createMapInter();
 });
