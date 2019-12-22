@@ -56,7 +56,6 @@ document
   .addEventListener("change", () => {
     if (tempAreaPlot.showStroke) {
       clearPlot("area-temp");
-      console.log("changed");
       tempAreaPlot.strokeWeight = document.getElementById(
         "adjust-stroke-weight-area-temp"
       ).value;
