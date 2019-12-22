@@ -1,43 +1,38 @@
 const width = document.querySelector("#face").clientWidth;
 const height = document.querySelector("#face").clientHeight;
 
-export const carsScatterPlot = function() {
-  d3.csv("https://vizhub.com/curran/datasets/auto-mpg.csv").then(data => {
+export const temperatureScatterPlot = function() {
+  d3.csv(
+    "https://vizhub.com/curran/datasets/temperature-in-san-francisco.csv"
+  ).then(data => {
     // process data
     data.forEach(d => {
-      d.mpg = +d.mpg;
-      d.cylinders = +d.cylinders;
-      d.displacement = +d.displacement;
-      d.horsepower = +d.horsepower;
-      d.weight = +d.weight;
-      d.acceleration = +d.acceleration;
-      d.year = +d.year;
+      d.timestamp = new Date(d.timestamp);
+      d.temperature = +d.temperature;
     });
     render(data);
   });
 };
 
 const render = data => {
-  const svg = d3.select("#cars-scatter-plot");
-  const title = "Top 10 Most Populous Countries";
-  const xAxisLabel = "Horsepower";
-  const yAxisLabel = "Weight";
+  const svg = d3.select("#temperature-scatter-plot");
+  const title = "Week of Temp in San-Fran";
+  const xAxisLabel = "TimeStamp";
+  const yAxisLabel = "Temperature";
   const margin = { top: 60, bottom: 70, left: 150, right: 50 };
-  const circleRadius = 10;
+  const circleRadius = 3;
   const innerWidth = width - margin.left - margin.right;
   const innerHeight = height - margin.top - margin.bottom;
   const g = svg
     .append("g")
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-  const xValue = d => d.weight;
-  const yValue = d => d.horsepower;
+  const xValue = d => d.timestamp;
+  const yValue = d => d.temperature;
 
   // get the range for x range
   const xScale = d3
-    .scaleLinear()
-    // .domain([d3.min(data, xValue), d3.max(data, xValue)])
-    // alternative
+    .scaleTime()
     .domain(d3.extent(data, xValue))
     .range([0, innerWidth])
     .nice();
@@ -45,14 +40,13 @@ const render = data => {
   // x axis
   const xAxis = d3
     .axisBottom(xScale)
-    .tickFormat(d3.format(".3s"))
     .tickSize(-innerHeight)
     .tickPadding(20);
 
   const yScale = d3
     .scaleLinear()
     .domain(d3.extent(data, yValue))
-    .range([0, innerHeight])
+    .range([innerHeight, 0])
     .nice();
   // y axis
   const yAxis = d3

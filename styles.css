@@ -72,7 +72,8 @@ button {
 svg {
   width: 100%;
   margin: 0.5rem 0rem;
-  background-color: #efecea;
+  /* background-color: #efecea; */
+  background-color: #f5f3f2;
   max-height: 520px;
   max-width: 960px;
   height: 520px;
