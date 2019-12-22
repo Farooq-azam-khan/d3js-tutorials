@@ -2,6 +2,8 @@ import { formatCar, filterByPrice } from "./components/car.js";
 import { createReplica } from "./examples/replica.js";
 import { createFace, animateFace } from "./examples/createface.js";
 import { barchartPopulation } from "./examples/barchartPopulation.js";
+import { scatterPlot } from "./examples/scatterplot.js";
+import { carsScatterPlot } from "./examples/carsScatterplot.js";
 window.addEventListener("DOMContentLoaded", function() {
   // cars basic js
   d3.json("./data/cars.json").then(displayToDOM);
@@ -37,4 +39,8 @@ window.addEventListener("DOMContentLoaded", function() {
 
   // bar chart
   barchartPopulation();
+  // scatter plot
+  scatterPlot();
+  // cars scatterplot
+  carsScatterPlot();
 });

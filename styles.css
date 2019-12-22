@@ -9,15 +9,7 @@ body {
 }
 .row {
   /* border: 1px dashed darkgrey; */
-}
-
-p {
-  background-color: thistle;
-}
-
-ol,
-ul {
-  background-color: wheat;
+  width: 95%;
 }
 
 code {
@@ -63,8 +55,23 @@ iframe[seamless] {
   display: block;
 }
 
+button {
+  background-color: #e6842a;
+  border: none;
+  color: white;
+  padding: 1rem 1.2rem;
+  font-size: 1rem;
+  font-family: "Ubuntu", sans-serif;
+  display: flex;
+  margin: 0.5rem;
+  margin: 0 auto;
+  border-radius: 12px;
+  text-decoration: none;
+}
+
 svg {
   width: 100%;
+  margin: 0.5rem 0rem;
   background-color: #efecea;
   max-height: 520px;
   max-width: 960px;
@@ -75,13 +82,19 @@ ol,
 ul,
 p {
   font-size: 1.1rem;
-  margin: 0.5rem 1.5rem;
+  margin: 0.5rem 2rem;
 }
 
 .barplot-rect {
   fill: steelblue;
 }
-
+.scatterplot-circle {
+  /* fill: #e3ba22; */
+  fill: #b396ad;
+  opacity: 0.8;
+  stroke: black;
+  stroke-width: 1;
+}
 .plot-title {
   fill: #635f5d;
   font-family: "Ubuntu", sans-serif;
@@ -99,4 +112,8 @@ text {
 
 .tick line {
   stroke: #c0c0bb;
+}
+
+.axis-label-scatterplot {
+  font-size: 1.5rem;
 }

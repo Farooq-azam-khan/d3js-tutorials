@@ -12,7 +12,6 @@ export const createFace = function() {
   // const width = 960;
   // const height = 520;
 
-  // console.log({ width, height });
   const svg = d3.select("#face").attr("height", height);
   const face = svg
     .append("circle")
@@ -96,7 +95,6 @@ export const animateFace = () => {
     .duration(timeTranstion)
     .attr("transform", `translate(${eyeBrowXOffset}, ${-eyeBrowYOffset})`);
   const eyebrowGroup = d3.select("#eye-brow-group");
-  console.log(eyebrowGroup);
   eyebrowGroup
     .transition()
     .delay(timeTranstion * 2)
