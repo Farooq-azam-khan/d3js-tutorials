@@ -16,6 +16,8 @@ import { createMapInter } from "./examples/mapInteraction.js";
 // import { blankCanvas } from "./components/blank_canvas.js";
 import { treeByCountry } from "./examples/trees_country.js";
 import { treeByCountry2 } from "./examples/tree_country_2.js";
+import { lineplotCosine } from "./examples/cosineFunc.js";
+import { plotLines } from "./components/multiLinePlot.js";
 // import the state
 import {
   lineplotTempState,
@@ -23,7 +25,6 @@ import {
   tempAreaPlot,
   fruitState
 } from "./js/state.js";
-
 const clearPlot = function(id) {
   const groups = document.getElementById(id).querySelectorAll("g");
   groups.forEach(val => {
@@ -130,6 +131,26 @@ window.addEventListener("DOMContentLoaded", function() {
   // listen for actions
 
   linePlotTemp(lineplotTempState);
+
+  // draw cosine
+  lineplotCosine({
+    id: "#cosine",
+    lower: -Math.PI,
+    upper: Math.PI,
+    dt: 0.01,
+    func: Math.cos,
+    title: "Sine(x)"
+  });
+
+  // multiline plots
+  plotLines({
+    id: "#sine-cosine",
+    lower: -Math.PI,
+    upper: Math.PI,
+    dt: 0.01,
+    title: "Sine(x) and Cosine(x)",
+    funcs: [Math.cos, Math.sin]
+  });
 
   // area plot for temp
   areaPlotTemp(tempAreaPlot);

@@ -84,6 +84,9 @@ p code {
   border-bottom: 1px solid black;
   padding-bottom: 1rem;
 }
+.row:last-child {
+  border-bottom: none;
+}
 figure {
   display: block;
   margin: 2rem 0;
