@@ -61,7 +61,11 @@ p {
 
   color: #25201d;
 }
-
+code {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.8rem;
+  width: 100%;
+}
 p code {
   background-color: #ffefc4;
   /* border: 1px dashed greenyellow; */
@@ -94,4 +98,5 @@ figcaption::before {
 figcaption {
   font-size: 1.2rem;
   text-align: center;
+  text-transform: capitalize;
 }

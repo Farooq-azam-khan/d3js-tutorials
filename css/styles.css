@@ -1,11 +1,5 @@
 /* if one needs to add counter h4 h5 or h6 */
 
-code {
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 1rem;
-  width: 100%;
-}
-
 .file-reference {
   font-family: "IBM Plex Mono", monospace;
 }
@@ -36,71 +30,6 @@ button {
 
 button:disabled {
   background-color: lightslategrey;
-}
-
-svg {
-  width: 100%;
-  margin: 0.5rem 0rem;
-  /* background-color: #efecea; */
-  background-color: #f5f3f2;
-  max-height: 520px;
-  max-width: 960px;
-  height: 520px;
-}
-
-.barplot-rect {
-  fill: steelblue;
-}
-.scatterplot-circle {
-  /* fill: #e3ba22; */
-  fill: #b396ad;
-  opacity: 0.8;
-  stroke: black;
-  stroke-width: 1;
-}
-.plot-title {
-  /* text-anchor: middle; */
-  fill: #635f5d;
-  font-family: "Ubuntu", sans-serif;
-  font-size: 3rem;
-}
-text {
-  fill: #8e8883;
-  font-family: "Ubuntu", sans-serif;
-  font-size: 1rem;
-}
-.label {
-  fill: #8e8883;
-  font-family: "IBM Plex Mono", monospace;
-  font-variant: small-caps;
-  text-transform: capitalize;
-  font-size: 1.5rem;
-}
-.tick {
-  font-family: "Ubuntu", sans-serif;
-  font-size: 1rem;
-  font-style: smallcaps;
-}
-
-.tick line {
-  stroke: #c0c0bb;
-}
-
-.axis-label-scatterplot {
-  font-size: 1.5rem;
-}
-
-.line-plot {
-  stroke: #bd2d28;
-  stroke-width: 2;
-  stroke-linejoin: round;
-}
-
-.area-plot {
-  fill: #e25a42;
-  stroke-linejoin: round;
-  /* stroke: black; */
-  /* stroke-width: 2; */
 }
 
 input[type="number"] {

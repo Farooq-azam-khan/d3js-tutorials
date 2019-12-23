@@ -13,7 +13,9 @@ import { nestedBowlOfFruit } from "./examples/nestedElementsGeneralUpdatePattern
 import { fruitInteraction } from "./examples/interactionUniDirection.js";
 import { createMapBeg } from "./examples/mapexample.js";
 import { createMapInter } from "./examples/mapInteraction.js";
-
+// import { blankCanvas } from "./components/blank_canvas.js";
+import { treeByCountry } from "./examples/trees_country.js";
+import { treeByCountry2 } from "./examples/tree_country_2.js";
 // import the state
 import {
   lineplotTempState,
@@ -147,4 +149,9 @@ window.addEventListener("DOMContentLoaded", function() {
   createMapBeg();
   // map interaction d3
   createMapInter();
+
+  // blank canvas
+  // blankCanvas({ id: "#blank-canvas" });
+  treeByCountry({ id: "#tree-country" });
+  treeByCountry2({ id: "#tree-country-2" });
 });

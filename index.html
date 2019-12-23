@@ -375,6 +375,26 @@ export const formatCar = car =>
         <svg id="map-interaction"></svg>
       </div>
       <!-- end of section 11-->
+      <div class="row">
+        <h2>Tree Visualization</h2>
+        <p>We will create a tree. Uses the d3.hierarchy library. It is there by default.</p>
+        <svg id="tree-country"></svg>
+        <svg id="tree-country-2"></svg>
+        <p>You could use <code class="js">treeLayout = d3.cluster()</code> if the 
+        leaft nodes are unlevel to have them appear on the same level.</p>
+        <p>You can also have vertical trees with the following code: </p>
+        <figure>
+<pre class="js"><code>const treeRoot = d3.hierarchy(data);
+  const links = treeLayout(treeRoot).links();
+  const linkPathGenerator = d3
+    .linkHorizontal() //.linkVertical()
+    .x(d => d.y)
+    .y(d => d.x);
+</code></pre>
+          <figcaption>vertical tree code</figcaption>
+        </figure>
+
+      </div><!--end of section 12-->
     </div>
     <!-- end of container-->
     <!-- hljs -->
