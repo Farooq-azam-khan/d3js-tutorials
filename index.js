@@ -1,6 +1,6 @@
 import { formatCar, filterByPrice } from "./components/car.js";
 import { createReplica } from "./examples/replica.js";
-import { createFace, animateFace } from "./examples/createface.js";
+import { createFace } from "./examples/createface.js";
 import { barchartPopulation } from "./examples/barchartPopulation.js";
 import { scatterPlot } from "./examples/scatterplot.js";
 import { carsScatterPlot } from "./examples/carsScatterplot.js";
@@ -13,10 +13,14 @@ import { nestedBowlOfFruit } from "./examples/nestedElementsGeneralUpdatePattern
 import { fruitInteraction } from "./examples/interactionUniDirection.js";
 import { createMapBeg } from "./examples/mapexample.js";
 import { createMapInter } from "./examples/mapInteraction.js";
-let lineplotTempState = {
-  showFill: false,
-  showPoints: false
-};
+
+// import the state
+import {
+  lineplotTempState,
+  generalPatternState,
+  tempAreaPlot,
+  fruitState
+} from "./js/state.js";
 
 const clearPlot = function(id) {
   const groups = document.getElementById(id).querySelectorAll("g");
@@ -25,19 +29,6 @@ const clearPlot = function(id) {
   });
 };
 
-// document.getElementById("toggle").addEventListener("change", () => {
-//   clearPlot("lineplot-temp");
-
-//   if (document.getElementById("toggle").checked) {
-//     console.log("on");
-//     lineplotTempState.showPoints = true;
-//   } else {
-//     console.log("off");
-//     lineplotTempState.showPoints = false;
-//   }
-
-//   linePlotTemp(lineplotTempState);
-// });
 document.getElementById("show-points").addEventListener("click", () => {
   clearPlot("lineplot-temp");
   lineplotTempState.showPoints = !lineplotTempState.showPoints;
@@ -50,12 +41,6 @@ document.getElementById("show-fill").addEventListener("click", () => {
 
   linePlotTemp(lineplotTempState);
 });
-
-let tempAreaPlot = {
-  showStroke: false,
-  strokeWeight: 2,
-  showPoints: false
-};
 
 document.getElementById("show-stroke").addEventListener("click", () => {
   clearPlot("area-temp");
@@ -81,9 +66,6 @@ document
     }
   });
 
-const fruitState = {
-  startAnimation: true
-};
 document.getElementById("bowl-animation").addEventListener("click", () => {
   fruitState.startAnimation = true;
   bowloffruit(fruitState);
@@ -92,10 +74,6 @@ document.getElementById("bowl-animation").addEventListener("click", () => {
     document.getElementById("bowl-animation").disabled = false;
   }, 3000);
 });
-
-const generalPatternState = {
-  startAnimation: true
-};
 
 document
   .getElementById("general-pattern-bowl-animation")
@@ -110,12 +88,19 @@ document
     }, 3000);
   });
 
-document.getElementById("general-pattern-bowl-animation").disabled = true;
-document.getElementById("bowl-animation").disabled = true;
-setTimeout(() => {
-  document.getElementById("general-pattern-bowl-animation").disabled = false;
-  document.getElementById("bowl-animation").disabled = false;
-}, 3000);
+function displayToDOM(data) {
+  document.getElementById("carsData").innerText = JSON.stringify(data, null, 4);
+
+  document.getElementById("formatCar").innerText = data.reduce((acc, d) => {
+    acc += formatCar(d) + "\n";
+    return acc;
+  }, "");
+  document.getElementById("filterCarPrice").innerText = JSON.stringify(
+    filterByPrice(data, 2000),
+    null,
+    4
+  );
+}
 
 window.addEventListener("DOMContentLoaded", function() {
   document.querySelectorAll("pre code").forEach(block => {
@@ -125,34 +110,10 @@ window.addEventListener("DOMContentLoaded", function() {
   // cars basic js
   d3.json("./data/cars.json").then(displayToDOM);
 
-  function displayToDOM(data) {
-    document.getElementById("carsData").innerText = JSON.stringify(
-      data,
-      null,
-      4
-    );
-
-    document.getElementById("formatCar").innerText = data.reduce((acc, d) => {
-      acc += formatCar(d) + "\n";
-      return acc;
-    }, "");
-    document.getElementById("filterCarPrice").innerText = JSON.stringify(
-      filterByPrice(data, 2000),
-      null,
-      4
-    );
-  }
-
   // replica
   createReplica();
   // face
   createFace();
-  // reset animation for face
-  document
-    .querySelector("#face-animation-btn")
-    .addEventListener("click", () => {
-      animateFace();
-    });
 
   // bar chart
   barchartPopulation();

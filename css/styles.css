@@ -1,74 +1,4 @@
-body {
-  font-family: "Baskervville", serif;
-  margin: 0;
-}
-
-/* debugging */
-.container {
-  background-color: white;
-  /* reset numbering for headings */
-  counter-reset: h2counter 0;
-}
-
-.row {
-  width: 95%;
-  counter-reset: h3counter;
-}
-
-p code {
-  background-color: #ffefc4;
-  /* border: 1px dashed greenyellow; */
-}
-/* general styles */
-h1,
-h2,
-h3 {
-  text-align: center;
-  font-variant: small-caps;
-
-  color: #635f5d;
-}
-
-h1 {
-  font-size: 3rem;
-  letter-spacing: 0.7rem;
-  font-weight: 700;
-}
-
-h2::before {
-  counter-increment: h2counter;
-  content: counter(h2counter) ".\0000a0\0000a0";
-}
-h2 {
-  font-size: 2rem;
-  letter-spacing: 0.5rem;
-  color: #9a3e25;
-}
-
-h3::before {
-  counter-increment: h3counter;
-  content: counter(h2counter) "." counter(h3counter) ".\0000a0";
-}
-h3 {
-  font-size: 1.5rem;
-  letter-spacing: 0.2rem;
-  color: darkgreen;
-}
-
 /* if one needs to add counter h4 h5 or h6 */
-
-/* flexbox styles */
-.container {
-  display: flex;
-  flex-direction: column;
-  max-width: 960px;
-  margin: 0 auto;
-  margin-bottom: 1rem;
-}
-
-.row {
-  margin: 1rem 1rem;
-}
 
 code {
   font-family: "IBM Plex Mono", monospace;
@@ -116,15 +46,6 @@ svg {
   max-height: 520px;
   max-width: 960px;
   height: 520px;
-}
-
-ol,
-ul,
-p {
-  font-size: 1.1rem;
-  margin: 0.5rem 2rem;
-
-  color: #25201d;
 }
 
 .barplot-rect {
@@ -288,4 +209,18 @@ a:active {
 } */
 .sphere-path {
   fill: skyblue;
+}
+
+@media print {
+  input,
+  button {
+    display: none;
+  }
+  .row {
+    width: 80%;
+  }
+
+  .row svg {
+    width: 800px;
+  }
 }

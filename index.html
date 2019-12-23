@@ -29,7 +29,9 @@
       href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/default.min.css"
     />
     <!-- custom styles -->
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="css/d3_styles.css" />
+    <link rel="stylesheet" href="css/generic_styles.css" />
+    <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
     <div id="app" class="container">
@@ -37,10 +39,26 @@
       <div class="row">
         <h2>Working with Javascript</h2>
         <p>We have the following data of cars</p>
-        <code id="carsData"></code>
-
-        <p>We can use functional programming to make it look nicer</p>
-        <code id="formatCar"></code>
+        <figure>
+        <pre class="json"><code id="carsData"></code></pre>
+      <figcaption>List of Cars</figcaption>
+      </figure>
+        <p>We can use functional programming to make it look nicer. 
+          The code below use a functional paradigm. 
+          By making a <code>reduce</code> function we can easily format json formatted data. </p> 
+          <figure>
+            <pre class="js"><code >data.reduce((acc, d) => {
+  acc += formatCar(d) + "\n";
+  return acc;
+}, "");
+export const formatCar = car =>
+  `${car.year} ${car.make} ${car.model}: ${car.price}`;</code></pre>
+            <figcaption>Reduce Function</figcaption>
+          </figure>
+        <figure>
+          <pre class="json"><code id="formatCar"></code></pre>
+          <figcaption>Use of Reduce function</figcaption>
+        </figure>
         <p>
           This is done by mapping over the data with a custom function that
           formats each object (i.e. each car description). Look at
@@ -51,7 +69,16 @@
           We can also filter by a specific price. In the following example we
           filter by car prices less than $2000.
         </p>
-        <code id="filterCarPrice"></code>
+
+        <figure>
+          <pre class="js"><code>export const filterByPrice = (cars, price) =>
+            cars.filter(car => car.price &lt; price);</code></pre>
+        <figcaption>Here is the code for the filter method.</figcaption>
+      </figure>
+        <figure>
+        <pre class="json"><code id="filterCarPrice"></code></pre>
+          <figcaption> Result of applying the filter method used here</figcaption>
+      </figure>
       </div>
       <!-- end of row 1 -->
 
@@ -220,9 +247,10 @@
         <svg id="nested-bowl-of-fruit"></svg>
         <p>
           You can add only one element (like the bowl) by using the
+          <pre class="js">
           <code
             >selection.selectAll('rect').data([null]).enter().append('rect')</code
-          >.
+          ></pre>.
         </p>
       </div>
       <!-- end of row 9-->
@@ -362,6 +390,11 @@
     <script src="https://d3js.org/d3-array.v1.min.js"></script>
     <script src="https://d3js.org/d3-geo.v1.min.js"></script>
     <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+
+    
+    <script type="module" src="js/state.js"></script>
     <script type="module" src="index.js"></script>
+    <script type="module" src="js/button_logic.js"></script>
+
   </body>
 </html>

@@ -16,7 +16,6 @@ export const createMapInter = () => {
   // zooming
   svg.call(
     d3.zoom().on("zoom", () => {
-      console.log("zoom");
       g.attr("transform", d3.event.transform);
     })
   );
@@ -34,7 +33,6 @@ export const createMapInter = () => {
       acc[d.iso_n3] = d.name;
       return acc;
     }, {});
-    console.log({ tsvData });
     const paths = g.selectAll("path").data(countries.features);
     paths
       .enter()

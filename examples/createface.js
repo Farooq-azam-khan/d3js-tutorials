@@ -9,9 +9,6 @@ const timeTranstion = 1000;
 const width = document.querySelector("#face").clientWidth;
 const height = document.querySelector("#face").clientHeight;
 export const createFace = function() {
-  // const width = 960;
-  // const height = 520;
-
   const svg = d3.select("#face").attr("height", height);
   const face = svg
     .append("circle")
@@ -106,4 +103,10 @@ export const animateFace = () => {
     .delay(timeTranstion * 3)
     .duration(timeTranstion)
     .attr("transform", `translate(${0}, ${0})`);
+
+  eyebrowGroup
+    .transition()
+    .delay(timeTranstion * 4)
+    .duration(timeTranstion)
+    .attr("transform", `translate(${width / 2}, ${height / 2})`);
 };

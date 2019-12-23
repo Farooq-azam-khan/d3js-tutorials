@@ -35,6 +35,7 @@ export const createMapBeg = () => {
     tweaksPaths
       .enter()
       .append("path")
-      .attr("d", d => favPathGen(d));
+      .attr("d", d => favPathGen(d))
+      .attr("class", "geo-paths");
   });
 };
