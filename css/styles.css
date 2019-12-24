@@ -124,22 +124,6 @@ a:active {
   color: rgb(58, 58, 116);
 }
 
-.geo-paths {
-  fill: lightgreen;
-  stroke: black;
-  stroke-width: 0.01rem;
-}
-.geo-paths:hover {
-  fill: maroon;
-}
-
-/* #map-beg {
-  background-color: black;
-} */
-.sphere-path {
-  fill: skyblue;
-}
-
 @media print {
   input,
   button {

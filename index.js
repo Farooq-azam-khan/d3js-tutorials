@@ -18,6 +18,7 @@ import { treeByCountry } from "./examples/trees_country.js";
 import { treeByCountry2 } from "./examples/tree_country_2.js";
 import { lineplotCosine } from "./examples/cosineFunc.js";
 import { plotLines } from "./components/multiLinePlot.js";
+import { makeLegend } from "./examples/legend.js";
 // import the state
 import {
   lineplotTempState,
@@ -175,4 +176,7 @@ window.addEventListener("DOMContentLoaded", function() {
   // blankCanvas({ id: "#blank-canvas" });
   treeByCountry({ id: "#tree-country" });
   treeByCountry2({ id: "#tree-country-2" });
+
+  // legend
+  makeLegend();
 });
