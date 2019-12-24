@@ -36,7 +36,8 @@ export const makeLegend = () => {
       circleRadius,
       textOffset,
       spacing,
-      textsize: "2rem"
+      textsize: "2rem",
+      backgroundRectWidth: 250
     });
 
     sizeG.call(sizeLegend, {

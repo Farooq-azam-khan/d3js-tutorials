@@ -1,6 +1,27 @@
 export const colorLegend = (selection, props) => {
-  const { colorScale, circleRadius, spacing, textOffset, textsize } = props;
+  const {
+    colorScale,
+    circleRadius,
+    spacing,
+    textOffset,
+    backgroundRectWidth,
+    textsize
+  } = props;
 
+  const diameter = circleRadius * 2;
+  const backgroundRect = selection.selectAll("rect").data([null]);
+  const domainLength = colorScale.domain().length;
+  backgroundRect
+    .enter()
+    .append("rect")
+    .merge(backgroundRect)
+    .attr("width", backgroundRectWidth)
+    .attr("height", spacing * domainLength + diameter)
+    .attr("fill", "white")
+    .attr("x", -diameter)
+    .attr("rx", 10)
+    .attr("opacity", 0.8)
+    .attr("y", -diameter);
   const domain = colorScale.domain();
 
   const groups = selection.selectAll("g").data(domain);

@@ -420,6 +420,10 @@ export const formatCar = car =>
           <li>compute ticks from size scale is also done</li>
         </ul>
         <svg id="legend"></svg>
+
+        <h3>Map Legend</h3>
+        <p>Lets add a legend to the maps.</p>
+        <svg id="map-legend"></svg>
       </div>
       <!-- end of section 13 -->
     </div>
@@ -438,7 +442,12 @@ export const formatCar = car =>
     <script src="https://d3js.org/d3-geo.v1.min.js"></script>
     <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
 
-    
+    <!-- d3 color schemes -->
+    <script src="https://d3js.org/d3-color.v1.min.js"></script>
+    <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+
+    <!-- custom js -->
     <script type="module" src="js/state.js"></script>
     <script type="module" src="index.js"></script>
     <script type="module" src="js/button_logic.js"></script>

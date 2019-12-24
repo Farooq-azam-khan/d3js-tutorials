@@ -19,6 +19,8 @@ import { treeByCountry2 } from "./examples/tree_country_2.js";
 import { lineplotCosine } from "./examples/cosineFunc.js";
 import { plotLines } from "./components/multiLinePlot.js";
 import { makeLegend } from "./examples/legend.js";
+import { mapLegend } from "./examples/maplegend.js";
+
 // import the state
 import {
   lineplotTempState,
@@ -179,4 +181,7 @@ window.addEventListener("DOMContentLoaded", function() {
 
   // legend
   makeLegend();
+
+  // map legend
+  mapLegend();
 });

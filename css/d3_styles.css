@@ -94,10 +94,18 @@ text {
   stroke: black;
   stroke-width: 0.01rem;
 }
+
 .geo-paths:hover {
   fill: maroon;
 }
+.geo-paths2 {
+  stroke: black;
+  stroke-width: 0.01rem;
+}
 
+.geo-paths2:hover {
+  fill: slategrey;
+}
 /* #map-beg {
   background-color: black;
 } */
